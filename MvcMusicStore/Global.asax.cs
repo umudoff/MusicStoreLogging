@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MvcMusicStore.PerfCounters;
+using PerformanceCounterHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,8 @@ namespace MvcMusicStore
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            var counterHelper= PerformanceHelper.CreateCounterHelper<StoreCounters>("Store project");
+            counterHelper.RawValue(StoreCounters.GoToHome,0);
         }
     }
 }
